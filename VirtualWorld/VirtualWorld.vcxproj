@@ -89,9 +89,13 @@
     <QtUic Include="virtualworld.ui" />
     <QtMoc Include="virtualworld.h" />
     <ClCompile Include="controller.cpp" />
+    <ClCompile Include="shapecarre.cpp" />
     <ClCompile Include="shapecircle.cpp" />
+    <ClCompile Include="ShapeFactory.cpp" />
+    <ClCompile Include="shapeGroup.cpp" />
     <ClCompile Include="shapemanager.cpp" />
     <ClCompile Include="paintview.cpp" />
+    <ClCompile Include="shaperectangle.cpp" />
     <ClCompile Include="treeview.cpp" />
     <ClCompile Include="virtualworld.cpp" />
     <ClCompile Include="main.cpp" />
@@ -99,6 +103,7 @@
   <ItemGroup>
     <ClInclude Include="controller.h" />
     <ClInclude Include="observer.h" />
+    <ClInclude Include="ShapeFactory.h" />
     <ClInclude Include="shapemanager.h" />
     <ClInclude Include="shape.h" />
     <QtMoc Include="view.h" />

@@ -1,16 +1,18 @@
 #include "shape.h"
 #include <QGraphicsEllipseItem>
 
-int Circle::current_id; // added
+int Shape::current_id; // added
 
-Circle::Circle() : id(current_id++)
+Circle::Circle()
 {
+	id = current_id++;
 	pos = QPointF(-1, -1);
 	radius = 0.;
 }
 
-Circle::Circle(QPointF p, double r) : radius(r), id(current_id++)
+Circle::Circle(QPointF p, double r) : radius(r)
 {
+	id = current_id++;
 	pos = p;
 }
 
@@ -26,4 +28,8 @@ QGraphicsItem* Circle::getGraphicsItem() const
 QString Circle::type() const
 {
 	return "Circle";
+}
+
+void Circle::draw()
+{
 }

@@ -61,6 +61,18 @@
     <ClCompile Include="treeview.cpp">
       <Filter>View</Filter>
     </ClCompile>
+    <ClCompile Include="shapeGroup.cpp">
+      <Filter>Model</Filter>
+    </ClCompile>
+    <ClCompile Include="shaperectangle.cpp">
+      <Filter>Model</Filter>
+    </ClCompile>
+    <ClCompile Include="shapecarre.cpp">
+      <Filter>Model</Filter>
+    </ClCompile>
+    <ClCompile Include="ShapeFactory.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="shape.h">
@@ -73,6 +85,9 @@
       <Filter>Controller</Filter>
     </ClInclude>
     <ClInclude Include="observer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ShapeFactory.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
