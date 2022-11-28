@@ -3,6 +3,7 @@
 #include <QtWidgets/QMainWindow>
 #include "ui_virtualworld.h"
 #include "view.h"
+#include "ShapeFactory.h"
 
 class VirtualWorld : public QMainWindow
 {
@@ -14,7 +15,6 @@ public:
 
 public slots:
     void addShape();
-
 private:
     Ui::VirtualWorldClass ui;
     PaintView* paintview;

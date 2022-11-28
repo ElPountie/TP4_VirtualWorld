@@ -4,7 +4,7 @@
 #include <QGraphicsView>
 #include <QGraphicsScene>
 #include <QTreeWidget>
-
+#include "shape.h"
 
 class PaintView : public QGraphicsScene, public Observer//: public QObject
 {
@@ -18,9 +18,9 @@ private:
 
 public:
 	PaintView(ShapeManager* = nullptr);
-
 	void updateModel();
-
+	void groupShape();
+	QVector<QGraphicsItem*> getSelected();
 protected:
 
     void drawForeground(QPainter* painter, const QRectF& rect);

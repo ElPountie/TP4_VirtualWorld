@@ -19,6 +19,7 @@ VirtualWorld::VirtualWorld(QWidget *parent, ShapeManager* sm)
 
     // Connect buttons
     connect(ui.Object_AddButton, &QPushButton::pressed, this, &VirtualWorld::addShape);
+    connect(ui.Object_GroupButton, &QPushButton::pressed, paintview, &PaintView::groupShape);
 }
 
 VirtualWorld::~VirtualWorld()
@@ -26,13 +27,15 @@ VirtualWorld::~VirtualWorld()
 
 void VirtualWorld::addShape()
 {
+    ShapeFactory* sf = new ShapeFactory(shapeManager);
     if (ui.radioButton_Circle->isChecked()) {
-        ControllerAdd(shapeManager).control("Circle");
+        sf->create("Circle");
     }
     else if (ui.radioButton_Rectangle->isChecked()) {
-        ControllerAdd(shapeManager).control("Rectangle");
+        sf->create("Rectangle");
     }
     else if (ui.radioButton_Square->isChecked()) {
-        ControllerAdd(shapeManager).control("Square");
+        sf->create("Square");
     }
+    delete sf;
 }

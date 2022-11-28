@@ -45,6 +45,11 @@ void PaintView::updateModel()
 	update();
 }
 
+QVector<QGraphicsItem*> PaintView::getSelected()
+{
+	return selected;
+}
+
 void PaintView::mousePressEvent(QGraphicsSceneMouseEvent* mouseEvent)
 {
 	if (mouseEvent->button() == Qt::LeftButton)
@@ -86,4 +91,21 @@ void PaintView::mouseReleaseEvent(QGraphicsSceneMouseEvent* mouseEvent)
 	selected.clear();
 
 	update();
+}
+
+void PaintView::groupShape() {
+	Groupe* grp = new Groupe();
+	for (QGraphicsItem* item : selected)
+	{
+		QVariant variant = item->data(0);
+		int id = variant.toInt();
+
+		bool selected = shapeManager->selectShape(id);
+		if (selected)
+		{
+			QRectF rect = item->boundingRect();
+			shapeManager->moveShape(item->scenePos() + rect.center());
+		}
+	}
+	delete grp;
 }

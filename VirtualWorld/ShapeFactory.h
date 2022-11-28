@@ -1,7 +1,12 @@
 #pragma once
+#include "shapemanager.h"
+#include "controller.h"
 class ShapeFactory
 {
+private:
+	ShapeManager* shapeManager;
 public:
-	virtual void create() = 0;
+	ShapeFactory(ShapeManager* sm);
+	void create(QString shape);
 };
 

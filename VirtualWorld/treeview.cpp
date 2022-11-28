@@ -20,7 +20,6 @@ void TreeView::updateModel()
 		item->setText(0, QString::number(shape->id));
 		item->setText(1, shape->type());
 
-
 		QTreeWidgetItem* itemChild1 = new QTreeWidgetItem(item);
 		itemChild1->setText(0, "ChildId1");
 		itemChild1->setText(1, "ChildType1");
