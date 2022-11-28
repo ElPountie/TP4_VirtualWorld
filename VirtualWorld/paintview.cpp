@@ -86,9 +86,9 @@ void PaintView::mouseReleaseEvent(QGraphicsSceneMouseEvent* mouseEvent)
 	toolbox = "mouseReleaseEvent";
 
 	// Call Controller to modify the model
-	(new ControllerMoveShape(shapeManager))->control(selected);
+	/*(new ControllerMoveShape(shapeManager))->control(selected);
 
-	selected.clear();
+	selected.clear();*/
 
 	update();
 }
@@ -103,9 +103,9 @@ void PaintView::groupShape() {
 		bool selected = shapeManager->selectShape(id);
 		if (selected)
 		{
-			QRectF rect = item->boundingRect();
-			shapeManager->moveShape(item->scenePos() + rect.center());
+			grp->add(shapeManager->getShapes().at(id));
 		}
 	}
+	//shapeManager->add(grp);
 	delete grp;
 }

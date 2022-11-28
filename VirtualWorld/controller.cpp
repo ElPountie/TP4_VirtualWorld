@@ -1,5 +1,6 @@
 #include "controller.h"
 #include "shapemanager.h"
+#include "ShapeFactory.h"
 
 #include <cstdlib>
 #include <iostream>
@@ -11,17 +12,10 @@ ControllerAdd::ControllerAdd(ShapeManager* sm) : shapeManager(sm)
 void ControllerAdd::control(QString forme)
 {
 	if (shapeManager == nullptr) return;
+	ShapeFactory* sf = new ShapeFactory(shapeManager);
 
 	// Add Shape
-	if (forme == "Circle") {
-		shapeManager->add(new Circle(QPointF(std::rand() % 400 - 200, std::rand() % 400 - 200), std::rand() % 100));
-	}
-	else if (forme == "Rectangle") {
-		shapeManager->add(new Rectangle(QPointF(std::rand() % 400 - 200, std::rand() % 400 - 200), std::rand() % 100, std::rand() % 100));
-	}
-	else if (forme == "Square") {
-		shapeManager->add(new Carre(QPointF(std::rand() % 400 - 200, std::rand() % 400 - 200), std::rand() % 100));
-	}
+	sf->create(forme);
 	//shapeManager->add(new Circle(QPointF(0., 0.), 100.));
 }
 

@@ -17,7 +17,7 @@ VirtualWorld::VirtualWorld(QWidget *parent, ShapeManager* sm)
     treeview = new TreeView(shapeManager, ui.treeWidget);
     shapeManager->addObserver(treeview);
 
-    // Connect buttons
+    // Connect buttonsd
     connect(ui.Object_AddButton, &QPushButton::pressed, this, &VirtualWorld::addShape);
     connect(ui.Object_GroupButton, &QPushButton::pressed, paintview, &PaintView::groupShape);
 }
@@ -27,15 +27,13 @@ VirtualWorld::~VirtualWorld()
 
 void VirtualWorld::addShape()
 {
-    ShapeFactory* sf = new ShapeFactory(shapeManager);
     if (ui.radioButton_Circle->isChecked()) {
-        sf->create("Circle");
+        (ControllerAdd(shapeManager).control("Circle"));
     }
     else if (ui.radioButton_Rectangle->isChecked()) {
-        sf->create("Rectangle");
+        (ControllerAdd(shapeManager).control("Rectangle"));
     }
     else if (ui.radioButton_Square->isChecked()) {
-        sf->create("Square");
+        (ControllerAdd(shapeManager).control("Square"));
     }
-    delete sf;
 }

@@ -15,6 +15,7 @@ public:
 
 public slots:
     void addShape();
+    void delShape();
 private:
     Ui::VirtualWorldClass ui;
     PaintView* paintview;

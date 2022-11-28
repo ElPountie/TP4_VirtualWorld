@@ -27,7 +27,7 @@ QGraphicsItem* Groupe::getGraphicsItem() const
 
 QString Groupe::type() const
 {
-	return QString();
+	return "Groupe";
 }
 
 void Groupe::draw()
