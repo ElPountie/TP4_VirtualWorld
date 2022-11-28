@@ -7,7 +7,7 @@ class ControllerAdd
 	ShapeManager* shapeManager;
 public:
 	ControllerAdd(ShapeManager* = nullptr);
-	void control();
+	void control(QString forme);
 };
 
 class ControllerMoveShape

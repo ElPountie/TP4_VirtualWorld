@@ -4,7 +4,7 @@
 ShapeManager::ShapeManager() : Observable(), selected(nullptr)
 {}
 
-void ShapeManager::add(Circle* shape)
+void ShapeManager::add(Shape* shape)
 {
 	if (shape == nullptr) return;
 
@@ -23,7 +23,7 @@ void ShapeManager::moveShape(QPointF pos)
 bool ShapeManager::selectShape(int id)
 {
 	selected = nullptr;
-	for (Circle* shape : shapes)
+	for (auto shape : shapes)
 	{
 		if (shape->id == id)
 		{

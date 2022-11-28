@@ -8,16 +8,16 @@
 class ShapeManager : public Observable
 {
 private:
-	QVector<Circle*> shapes;
-	Circle* selected;
+	QVector<Shape*> shapes;
+	Shape* selected;
 
 public:
 	ShapeManager();
-	void add(Circle*);
+	void add(Shape*);
 	void moveShape(QPointF);
 
 	bool selectShape(int);
 
-    const QVector<Circle*>& getShapes() const {return shapes;}
+    const QVector<Shape*>& getShapes() const {return shapes;}
 };
 

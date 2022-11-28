@@ -26,5 +26,13 @@ VirtualWorld::~VirtualWorld()
 
 void VirtualWorld::addShape()
 {
-    ControllerAdd(shapeManager).control();
+    if (ui.radioButton_Circle->isChecked()) {
+        ControllerAdd(shapeManager).control("Circle");
+    }
+    else if (ui.radioButton_Rectangle->isChecked()) {
+        ControllerAdd(shapeManager).control("Rectangle");
+    }
+    else if (ui.radioButton_Square->isChecked()) {
+        ControllerAdd(shapeManager).control("Square");
+    }
 }

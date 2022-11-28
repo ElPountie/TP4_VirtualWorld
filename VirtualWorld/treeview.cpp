@@ -13,8 +13,8 @@ void TreeView::updateModel()
 	labels << "id" << "type";
 	treeview->setHeaderLabels(labels);
 
-	QVector<Circle*> shapes = shapeManager->getShapes();
-	for (Circle* shape : shapes)
+	QVector<Shape*> shapes = shapeManager->getShapes();
+	for (Shape* shape : shapes)
 	{
 		QTreeWidgetItem* item = new QTreeWidgetItem(treeview);
 		item->setText(0, QString::number(shape->id));

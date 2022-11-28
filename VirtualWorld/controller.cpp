@@ -8,12 +8,20 @@
 ControllerAdd::ControllerAdd(ShapeManager* sm) : shapeManager(sm)
 {}
 
-void ControllerAdd::control()
+void ControllerAdd::control(QString forme)
 {
 	if (shapeManager == nullptr) return;
 
 	// Add Shape
-	shapeManager->add(new Circle(QPointF(std::rand() % 400 - 200, std::rand() % 400 - 200), std::rand() % 100));
+	if (forme == "Circle") {
+		shapeManager->add(new Circle(QPointF(std::rand() % 400 - 200, std::rand() % 400 - 200), std::rand() % 100));
+	}
+	else if (forme == "Rectangle") {
+		shapeManager->add(new Rectangle(QPointF(std::rand() % 400 - 200, std::rand() % 400 - 200), std::rand() % 100, std::rand() % 100));
+	}
+	else if (forme == "Square") {
+		shapeManager->add(new Carre(QPointF(std::rand() % 400 - 200, std::rand() % 400 - 200), std::rand() % 100));
+	}
 	//shapeManager->add(new Circle(QPointF(0., 0.), 100.));
 }
 

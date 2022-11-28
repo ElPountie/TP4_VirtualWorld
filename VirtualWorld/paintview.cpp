@@ -32,9 +32,9 @@ void PaintView::updateModel()
 	clear();
 
 	// Get models
-	QVector<Circle*> shapes = shapeManager->getShapes();
+	QVector<Shape*> shapes = shapeManager->getShapes();
 
-	for (Circle* shape : shapes)
+	for (Shape* shape : shapes)
 	{
 		QGraphicsItem* item = shape->getGraphicsItem();
 		item->setAcceptDrops(true);
