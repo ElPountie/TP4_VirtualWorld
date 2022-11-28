@@ -15,7 +15,7 @@ public:
 	ShapeManager();
 	void add(Shape*);
 	void moveShape(QPointF);
-
+	void removeShape(int id);
 	bool selectShape(int);
 
     const QVector<Shape*>& getShapes() const {return shapes;}

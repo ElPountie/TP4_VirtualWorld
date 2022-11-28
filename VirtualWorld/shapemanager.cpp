@@ -20,6 +20,11 @@ void ShapeManager::moveShape(QPointF pos)
 	selected->pos = pos;
 }
 
+void ShapeManager::removeShape(int id)
+{
+	shapes.remove(id);
+}
+
 bool ShapeManager::selectShape(int id)
 {
 	selected = nullptr;

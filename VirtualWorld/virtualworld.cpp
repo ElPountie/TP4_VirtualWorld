@@ -20,10 +20,16 @@ VirtualWorld::VirtualWorld(QWidget *parent, ShapeManager* sm)
     // Connect buttonsd
     connect(ui.Object_AddButton, &QPushButton::pressed, this, &VirtualWorld::addShape);
     connect(ui.Object_GroupButton, &QPushButton::pressed, paintview, &PaintView::groupShape);
+    connect(ui.Object_RemoveButton, &QPushButton::pressed, this, &VirtualWorld::delShape);
 }
 
 VirtualWorld::~VirtualWorld()
 {}
+
+void VirtualWorld::delShape()
+{
+    (ControllerRemove(shapeManager).control(ui.treeWidget->selectedItems()));
+}
 
 void VirtualWorld::addShape()
 {

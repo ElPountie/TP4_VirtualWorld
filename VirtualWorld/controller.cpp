@@ -15,7 +15,7 @@ void ControllerAdd::control(QString forme)
 	ShapeFactory* sf = new ShapeFactory(shapeManager);
 
 	// Add Shape
-	sf->create(forme);
+	shapeManager->add(sf->create(forme));
 	//shapeManager->add(new Circle(QPointF(0., 0.), 100.));
 }
 
@@ -38,6 +38,19 @@ void ControllerMoveShape::control(const QVector<QGraphicsItem*>& items)
 			QRectF rect = item->boundingRect();
 			shapeManager->moveShape(item->scenePos() + rect.center());
 		}
+	}
+
+	shapeManager->notifyObserver();
+}
+
+ControllerRemove::ControllerRemove(ShapeManager* sm) : shapeManager(sm)
+{
+}
+
+void ControllerRemove::control(QVector<QTreeWidgetItem*> list)
+{
+	for (auto index : list) {
+		shapeManager->removeShape(index->data(0, 0).toInt());
 	}
 
 	shapeManager->notifyObserver();

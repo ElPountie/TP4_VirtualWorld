@@ -7,6 +7,6 @@ private:
 	ShapeManager* shapeManager;
 public:
 	ShapeFactory(ShapeManager* sm);
-	void create(QString shape);
+	Shape* create(QString shape);
 };
 

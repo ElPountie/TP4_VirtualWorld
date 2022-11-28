@@ -1,6 +1,7 @@
 #pragma once
 #include "shapemanager.h"
 #include <QPointF>
+#include <qtreewidget.h>
 
 class ControllerAdd
 {
@@ -16,4 +17,12 @@ class ControllerMoveShape
 public:
 	ControllerMoveShape(ShapeManager* = nullptr);
     void control(const QVector<QGraphicsItem *> &);
+};
+
+class ControllerRemove {
+private:
+	ShapeManager* shapeManager;
+public:
+	ControllerRemove(ShapeManager* = nullptr);
+	void control(QVector<QTreeWidgetItem*> list);
 };
