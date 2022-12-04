@@ -1,4 +1,5 @@
 #include "view.h"
+#include <iostream>
 
 TreeView::TreeView(ShapeManager* sm, QTreeWidget* tw) : Observer(), shapeManager(sm), treeview(tw)
 {}
@@ -16,10 +17,12 @@ void TreeView::updateModel()
 	QVector<Shape*> shapes = shapeManager->getShapes();
 	for (Shape* shape : shapes)
 	{
+		std::cout << shape->id;
 		QTreeWidgetItem* item = new QTreeWidgetItem(treeview);
 		item->setText(0, QString::number(shape->id));
 		item->setText(1, shape->type());
 
+		/*
 		QTreeWidgetItem* itemChild1 = new QTreeWidgetItem(item);
 		itemChild1->setText(0, "ChildId1");
 		itemChild1->setText(1, "ChildType1");
@@ -27,5 +30,7 @@ void TreeView::updateModel()
 		QTreeWidgetItem* itemChild2 = new QTreeWidgetItem(item);
 		itemChild2->setText(0, "ChildId2");
 		itemChild2->setText(1, "ChildType2");
+		*/
 	}
+	std::cout << std::endl;
 }

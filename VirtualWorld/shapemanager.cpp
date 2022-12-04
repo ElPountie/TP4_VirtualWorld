@@ -22,7 +22,12 @@ void ShapeManager::moveShape(QPointF pos)
 
 void ShapeManager::removeShape(int id)
 {
-	shapes.remove(id);
+	for (size_t i = 0; i < shapes.size(); i++)
+	{
+		if (shapes.at(i)->id == id) {
+			shapes.remove(i);
+		}
+	}
 }
 
 bool ShapeManager::selectShape(int id)

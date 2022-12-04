@@ -1,6 +1,9 @@
 #include "view.h"
 #include <QGraphicsItem>
 #include <QGraphicsSceneMouseEvent>
+#include <iostream>
+
+using namespace std;
 
 PaintView::PaintView( ShapeManager* sm) : QGraphicsScene(), Observer(), shapeManager(sm)
 {
@@ -37,10 +40,12 @@ void PaintView::updateModel()
 	for (Shape* shape : shapes)
 	{
 		QGraphicsItem* item = shape->getGraphicsItem();
+		cout << shape->id;
 		item->setAcceptDrops(true);
 
 		addItem(item);
 	}
+	std::cout << std::endl;
 
 	update();
 }
