@@ -17,7 +17,6 @@ void TreeView::updateModel()
 	QVector<Shape*> shapes = shapeManager->getShapes();
 	for (Shape* shape : shapes)
 	{
-		std::cout << shape->id;
 		QTreeWidgetItem* item = new QTreeWidgetItem(treeview);
 		item->setText(0, QString::number(shape->id));
 		item->setText(1, shape->type());
@@ -32,5 +31,4 @@ void TreeView::updateModel()
 		itemChild2->setText(1, "ChildType2");
 		*/
 	}
-	std::cout << std::endl;
 }

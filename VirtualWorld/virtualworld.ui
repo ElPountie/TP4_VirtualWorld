@@ -179,7 +179,7 @@
        <item>
         <widget class="QTreeWidget" name="treeWidget">
          <property name="selectionMode">
-          <enum>QAbstractItemView::SingleSelection</enum>
+          <enum>QAbstractItemView::MultiSelection</enum>
          </property>
          <column>
           <property name="text">

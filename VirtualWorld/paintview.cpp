@@ -40,12 +40,10 @@ void PaintView::updateModel()
 	for (Shape* shape : shapes)
 	{
 		QGraphicsItem* item = shape->getGraphicsItem();
-		cout << shape->id;
 		item->setAcceptDrops(true);
 
 		addItem(item);
 	}
-	std::cout << std::endl;
 
 	update();
 }
@@ -111,6 +109,6 @@ void PaintView::groupShape() {
 			grp->add(shapeManager->getShapes().at(id));
 		}
 	}
-	//shapeManager->add(grp);
+	//shapeManager->add(grp); //Dont work
 	delete grp;
 }
