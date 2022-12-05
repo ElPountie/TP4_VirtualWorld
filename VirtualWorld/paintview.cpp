@@ -110,12 +110,6 @@ void PaintView::mouseMoveEvent(QGraphicsSceneMouseEvent* mouseEvent)
 		for (QGraphicsItem* item : selected)
 		{
 			item->moveBy(mouseD.x(), mouseD.y());
-			int id = item->data(0).toInt();
-			for (auto index : shapeManager->getShapes()) {
-				if (index->id == id) {
-					index->move(mouseD);
-				}
-			}
 		}
 		mousePos = mousePosNew;
 	}
@@ -174,6 +168,11 @@ void PaintView::groupShape() {
 	}
 	//shapeManager->add(grp); //Dont work
 	delete grp;
+}
+
+QVector<QVariant> PaintView::getSave()
+{
+	return save;
 }
 
 void PaintView::saveSelect() {

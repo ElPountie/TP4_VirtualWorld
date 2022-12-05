@@ -28,6 +28,7 @@ public:
 		return selected.size();
 	}
 	void groupShape();
+	QVector<QVariant> getSave();
 	QVector<QGraphicsItem*> getSelected();
 protected:
 

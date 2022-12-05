@@ -48,8 +48,17 @@ ControllerRemove::ControllerRemove(ShapeManager* sm) : shapeManager(sm)
 {
 }
 
-void ControllerRemove::control(QVector<QTreeWidgetItem*> list)
+void ControllerRemove::control(QVector<QVariant> list)
 {	
+	for (auto index : list) {
+		shapeManager->removeShape(index.toInt());
+	}
+
+	shapeManager->notifyObserver();
+}
+
+void ControllerRemove::control(QVector<QTreeWidgetItem*> list)
+{
 	for (auto index : list) {
 		shapeManager->removeShape(index->text(0).toInt());
 	}

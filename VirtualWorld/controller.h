@@ -24,5 +24,6 @@ private:
 	ShapeManager* shapeManager;
 public:
 	ControllerRemove(ShapeManager* = nullptr);
+	void control(QVector<QVariant> list);
 	void control(QVector<QTreeWidgetItem*> list);
 };

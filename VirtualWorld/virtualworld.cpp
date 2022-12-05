@@ -28,12 +28,23 @@ VirtualWorld::~VirtualWorld()
 
 void VirtualWorld::delShape()
 {
-    if (paintview->getSelectedNbr() != 0) {
-        paintview->saveSelect();
+    if (ui.treeWidget->selectedItems().size() != 0) {
+        if (paintview->getSelectedNbr() != 0) {
+            paintview->saveSelect();
+        }
+        (ControllerRemove(shapeManager).control(ui.treeWidget->selectedItems()));
+        if (paintview->getSelectedNbr() != 0) {
+            paintview->setSelect();
+        }
     }
-    (ControllerRemove(shapeManager).control(ui.treeWidget->selectedItems()));
-    if (paintview->getSelectedNbr() != 0) {
-        paintview->setSelect();
+    else {
+        if (paintview->getSelectedNbr() != 0) {
+            paintview->saveSelect();
+        }
+        (ControllerRemove(shapeManager).control(paintview->getSave()));
+        if (paintview->getSelectedNbr() != 0) {
+            paintview->setSelect();
+        }
     }
 }
 
