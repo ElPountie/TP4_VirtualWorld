@@ -27,3 +27,8 @@ QString Rectangle::type() const
 void Rectangle::draw()
 {
 }
+
+void Rectangle::move(QPointF pt)
+{
+	pos = pt;
+}

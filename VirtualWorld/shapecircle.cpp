@@ -33,3 +33,8 @@ QString Circle::type() const
 void Circle::draw()
 {
 }
+
+void Circle::move(QPointF pt)
+{
+	pos = pt;
+}

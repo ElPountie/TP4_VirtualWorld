@@ -30,6 +30,11 @@ QString Groupe::type() const
 	return "Groupe";
 }
 
+void Groupe::move(QPointF pt)
+{
+	pos = pt;
+}
+
 void Groupe::draw()
 {
 }

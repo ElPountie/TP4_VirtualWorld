@@ -26,3 +26,8 @@ QString Carre::type() const
 void Carre::draw()
 {
 }
+
+void Carre::move(QPointF pt)
+{
+	pos = pt;
+}

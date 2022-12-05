@@ -12,6 +12,7 @@ public:
 	virtual void draw() = 0;
 	virtual QGraphicsItem* getGraphicsItem() const = 0;
 	virtual QString type() const = 0 ;
+	virtual void move(QPointF pt) = 0;
 };
 
 
@@ -26,6 +27,7 @@ public:
     QGraphicsItem* getGraphicsItem() const;
     QString type() const;
 	void draw();
+	void move(QPointF pt);
 };
 
 class Carre : public Shape
@@ -38,6 +40,8 @@ public:
 	QGraphicsItem* getGraphicsItem() const;
 	QString type() const;
 	void draw();
+	void move(QPointF pt);
+
 };
 
 class Rectangle : public Shape
@@ -50,6 +54,8 @@ public:
 	QGraphicsItem* getGraphicsItem() const;
 	QString type() const;
 	void draw();
+	void move(QPointF pt);
+
 };
 
 class Groupe : public Shape
@@ -64,4 +70,5 @@ public:
 	void draw();
 	QGraphicsItem* getGraphicsItem() const;
 	QString type() const;
+	void move(QPointF pt);
 };
