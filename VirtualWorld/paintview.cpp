@@ -102,7 +102,7 @@ void PaintView::mousePressEvent(QGraphicsSceneMouseEvent* mouseEvent)
 
 void PaintView::mouseMoveEvent(QGraphicsSceneMouseEvent* mouseEvent)
 {
-	if ( selected.size() > 0 && (mouseEvent->buttons() & Qt::LeftButton))
+	if ( selected.size() > 0 && ((mouseEvent->buttons() & Qt::LeftButton) || (mouseEvent->buttons() & Qt::RightButton)))
 	{
 		QPointF mousePosNew = mouseEvent->scenePos();
 		toolbox = "mousePressEvent (" + QString::number(mousePos.x()) + "," + QString::number(mousePos.y());
