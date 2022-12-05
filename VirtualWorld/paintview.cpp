@@ -147,9 +147,13 @@ void PaintView::mouseReleaseEvent(QGraphicsSceneMouseEvent* mouseEvent)
 	}
 
 	// Call Controller to modify the model
-	/*(new ControllerMoveShape(shapeManager))->control(selected);
+	if (selected.size() > 0) {
+		saveSelect();
+		(new ControllerMoveShape(shapeManager))->control(selected);
+		setSelect();
+	}
 
-	selected.clear();*/
+	//selected.clear();
 
 	update();
 }
