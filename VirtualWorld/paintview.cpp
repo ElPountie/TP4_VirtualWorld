@@ -25,6 +25,16 @@ void PaintView::drawForeground(QPainter* painter, const QRectF& rect)
 	painter->drawRect(p1.x() + 10, p1.y() + 10, toolbox.size() * 7, 20);
 	painter->drawText(int(p1.x() + 14), int(p1.y() + 12), toolbox.size() * 10, 20, Qt::AlignLeft, toolbox);
 
+	QColor blue = Qt::blue;
+	blue.setAlphaF(0.05);
+
+	if (selectionStarted) {
+		painter->setBrush(blue);
+		painter->setPen(Qt::blue);
+		painter->drawRect(mousePos.x(), mousePos.y(), mouseD.x(), mouseD.y());
+	}
+
+
 	painter->restore();
 
 }
@@ -62,6 +72,24 @@ void PaintView::mousePressEvent(QGraphicsSceneMouseEvent* mouseEvent)
 
 		selected = this->items(mousePos);
 	}
+	else if (mouseEvent->button() == Qt::RightButton) {
+		mousePos = mouseEvent->scenePos();
+		mouseD = QPoint(0, 0);
+		toolbox = "mouseMoveEvent (" + QString::number(mousePos.x()) + "," + QString::number(mousePos.y());
+		bool containItem = false;
+		for (auto item : selected) {
+			if (item->boundingRect().contains(mousePos)) {
+				containItem = true;
+				break;
+			}
+		}
+
+		if (!containItem) {
+			selectionStarted = true;
+			selected.clear();
+		}
+
+	}
 
 	update();
 }
@@ -71,14 +99,20 @@ void PaintView::mouseMoveEvent(QGraphicsSceneMouseEvent* mouseEvent)
 	if ( selected.size() > 0 && (mouseEvent->buttons() & Qt::LeftButton))
 	{
 		QPointF mousePosNew = mouseEvent->scenePos();
-
-		toolbox = "mouseMoveEvent (" + QString::number(mousePosNew.x()) + "," + QString::number(mousePosNew.y());
+		toolbox = "mousePressEvent (" + QString::number(mousePos.x()) + "," + QString::number(mousePos.y());
 		QPointF mouseD = mousePosNew - mousePos;
 		for (QGraphicsItem* item : selected)
 		{
 			item->moveBy(mouseD.x(), mouseD.y());
 		}
 		mousePos = mousePosNew;
+	}
+	else if ((mouseEvent->buttons() & Qt::RightButton)) {
+		QPointF mousePosNew = mouseEvent->scenePos();
+
+		toolbox = "mouseRMoveEvent (" + QString::number(mousePosNew.x()) + "," + QString::number(mousePosNew.y());
+		
+		mouseD = mousePosNew - mousePos;
 	}
 
 	update();
@@ -87,6 +121,19 @@ void PaintView::mouseMoveEvent(QGraphicsSceneMouseEvent* mouseEvent)
 void PaintView::mouseReleaseEvent(QGraphicsSceneMouseEvent* mouseEvent)
 {
 	toolbox = "mouseReleaseEvent";
+	if (selected.size() > 0) {
+
+	}
+	else if (selectionStarted) {
+		selectionStarted = false;
+		QRectF rect = QRectF(mousePos.x(), mousePos.y(), mouseD.x(), mouseD.y());
+		for (auto item : items()) {
+			if (rect.contains(item->boundingRect().center()) && item->parentItem() == nullptr) {
+				selected.append(item);
+			}
+		}
+		selected.clear();
+	}
 
 	// Call Controller to modify the model
 	/*(new ControllerMoveShape(shapeManager))->control(selected);
@@ -108,6 +155,7 @@ void PaintView::groupShape() {
 		{
 			grp->add(shapeManager->getShapes().at(id));
 		}
+		
 	}
 	//shapeManager->add(grp); //Dont work
 	delete grp;
