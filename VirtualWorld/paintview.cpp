@@ -33,7 +33,13 @@ void PaintView::drawForeground(QPainter* painter, const QRectF& rect)
 		painter->setPen(Qt::blue);
 		painter->drawRect(mousePos.x(), mousePos.y(), mouseD.x(), mouseD.y());
 	}
-
+	if (selected.size() > 0) {
+		painter->setBrush(blue);
+		painter->setPen(Qt::blue);
+		for (auto item : selected) {
+			painter->drawRect(item->boundingRect());
+		}
+	}
 
 	painter->restore();
 
@@ -67,6 +73,7 @@ void PaintView::mousePressEvent(QGraphicsSceneMouseEvent* mouseEvent)
 {
 	if (mouseEvent->button() == Qt::LeftButton)
 	{
+		selected.clear();
 		mousePos = mouseEvent->scenePos();
 		toolbox = "mousePressEvent (" + QString::number(mousePos.x()) + "," + QString::number(mousePos.y());
 
@@ -138,7 +145,6 @@ void PaintView::mouseReleaseEvent(QGraphicsSceneMouseEvent* mouseEvent)
 				selected.append(item);
 			}
 		}
-		selected.clear();
 	}
 
 	// Call Controller to modify the model
