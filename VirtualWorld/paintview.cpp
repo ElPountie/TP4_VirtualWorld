@@ -93,7 +93,7 @@ void PaintView::mousePressEvent(QGraphicsSceneMouseEvent* mouseEvent)
 
 		if (!containItem) {
 			selectionStarted = true;
-			selected.clear();
+			
 		}
 
 	}
@@ -165,4 +165,25 @@ void PaintView::groupShape() {
 	}
 	//shapeManager->add(grp); //Dont work
 	delete grp;
+}
+
+void PaintView::saveSelect() {
+	
+	save.clear();
+	for (QGraphicsItem* item : selected) {
+		save.append(item->data(0));
+	}
+}
+
+void PaintView::setSelect() {
+
+	selected.clear();
+	for (QVariant var : save) {
+		for (QGraphicsItem* item : items()) {
+			if (var == item->data(0)) {
+				selected.append(item);
+				break;
+			}
+		}
+	}
 }
