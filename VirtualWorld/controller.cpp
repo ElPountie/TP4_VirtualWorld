@@ -13,9 +13,10 @@ void ControllerAdd::control(QString forme)
 {
 	if (shapeManager == nullptr) return;
 	ShapeFactory* sf = new ShapeFactory(shapeManager);
-
+	
 	// Add Shape
 	shapeManager->add(sf->create(forme));
+
 	//shapeManager->add(new Circle(QPointF(0., 0.), 100.));
 }
 

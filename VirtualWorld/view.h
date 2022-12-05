@@ -11,6 +11,7 @@ class PaintView : public QGraphicsScene, public Observer//: public QObject
 	Q_OBJECT
 private:
 	ShapeManager* shapeManager;
+	QVector<QVariant> save;
 	QVector<QGraphicsItem*> selected;
 	QPointF	mouseD;
 	bool selectionStarted;
@@ -21,6 +22,11 @@ private:
 public:
 	PaintView(ShapeManager* = nullptr);
 	void updateModel();
+	void saveSelect();
+	void setSelect();
+	int getSelectedNbr() {
+		return selected.size();
+	}
 	void groupShape();
 	QVector<QGraphicsItem*> getSelected();
 protected:
@@ -41,6 +47,6 @@ private:
 
 public:
 	TreeView(ShapeManager* = nullptr, QTreeWidget* = nullptr);
-
+	
 	void updateModel();
 };

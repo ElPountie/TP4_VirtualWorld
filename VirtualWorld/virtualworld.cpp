@@ -28,13 +28,21 @@ VirtualWorld::~VirtualWorld()
 
 void VirtualWorld::delShape()
 {
+    if (paintview->getSelectedNbr() != 0) {
+        paintview->saveSelect();
+    }
     (ControllerRemove(shapeManager).control(ui.treeWidget->selectedItems()));
+    if (paintview->getSelectedNbr() != 0) {
+        paintview->setSelect();
+    }
 }
 
 void VirtualWorld::addShape()
 {
+    
     if (ui.radioButton_Circle->isChecked()) {
         (ControllerAdd(shapeManager).control("Circle"));
+        
     }
     else if (ui.radioButton_Rectangle->isChecked()) {
         (ControllerAdd(shapeManager).control("Rectangle"));
@@ -42,4 +50,9 @@ void VirtualWorld::addShape()
     else if (ui.radioButton_Square->isChecked()) {
         (ControllerAdd(shapeManager).control("Square"));
     }
+    if (paintview->getSelectedNbr() != 0) {
+        paintview->saveSelect();
+        paintview->setSelect();
+    }
+    
 }
