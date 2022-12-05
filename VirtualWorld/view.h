@@ -12,6 +12,8 @@ class PaintView : public QGraphicsScene, public Observer//: public QObject
 private:
 	ShapeManager* shapeManager;
 	QVector<QGraphicsItem*> selected;
+	QPointF	mouseD;
+	bool selectionStarted;
 	QVector<QGraphicsItem*> tools;
 	QPointF mousePos;
 	QString toolbox;
