@@ -38,10 +38,8 @@ void PaintView::drawForeground(QPainter* painter, const QRectF& rect)
 		painter->setPen(Qt::blue);
 		for (auto item : selected) {
 			painter->drawRect(item->boundingRect());
-			selected.clear();
 		}
 	}
-
 	painter->restore();
 
 }
