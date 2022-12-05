@@ -58,6 +58,52 @@
          </property>
         </widget>
        </item>
+       <item>
+        <widget class="QGroupBox" name="groupBox_2">
+         <property name="title">
+          <string>Colors</string>
+         </property>
+         <widget class="QRadioButton" name="radioButton_Blue">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>60</y>
+            <width>89</width>
+            <height>20</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Blue</string>
+          </property>
+         </widget>
+         <widget class="QRadioButton" name="radioButton_Red">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>20</y>
+            <width>89</width>
+            <height>20</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Red</string>
+          </property>
+         </widget>
+         <widget class="QRadioButton" name="radioButton_Green">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>40</y>
+            <width>89</width>
+            <height>20</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Green</string>
+          </property>
+         </widget>
+        </widget>
+       </item>
       </layout>
      </widget>
     </item>

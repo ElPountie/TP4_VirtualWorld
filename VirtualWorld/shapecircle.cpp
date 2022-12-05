@@ -19,8 +19,23 @@ Circle::Circle(QPointF p, double r) : radius(r)
 
 QGraphicsItem* Circle::getGraphicsItem() const
 {
-	QGraphicsItem* item = new QGraphicsEllipseItem(pos.x()-radius, pos.y()-radius, radius*2., radius*2.);
+	QBrush tmpBrush(Qt::SolidPattern);
+	if (color == "Red") {
+		tmpBrush.setColor(QColor(255, 0, 0));
+	}
+	else if (color == "Green") {
+		tmpBrush.setColor(QColor(0, 255, 0));
+	}
+	else if (color == "Blue") {
+		tmpBrush.setColor(QColor(0, 0, 255));
+	}
+	QPen tmpPen;
+	tmpPen.setColor(Qt::black);
+	tmpPen.setWidth(2);
+	QGraphicsEllipseItem* item = new QGraphicsEllipseItem(pos.x()-radius, pos.y()-radius, radius*2., radius*2.);
 	item->setData(0,id);
+	item->setBrush(tmpBrush);
+	item->setPen(tmpPen);
 	return item;
 }
 

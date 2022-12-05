@@ -14,8 +14,24 @@ Rectangle::Rectangle(QPointF p, double haut, double lon) : hauteur(haut), longeu
 
 QGraphicsItem* Rectangle::getGraphicsItem() const
 {
-	QGraphicsItem* item = new QGraphicsRectItem(pos.x(), pos.y(), longeur, hauteur);
+	QBrush tmpBrush(Qt::SolidPattern);
+	if (color == "Red") {
+		tmpBrush.setColor(QColor(255, 0, 0));
+
+	}
+	else if (color == "Green") {
+		tmpBrush.setColor(QColor(0, 255, 0));
+	}
+	else if (color == "Blue") {
+		tmpBrush.setColor(QColor(0, 0, 255));
+	}
+	QPen tmpPen;
+	tmpPen.setColor(Qt::black);
+	tmpPen.setWidth(2);
+	QGraphicsRectItem* item = new QGraphicsRectItem(pos.x(), pos.y(), longeur, hauteur);
 	item->setData(0, id);
+	item->setBrush(tmpBrush);
+	item->setPen(tmpPen);
 	return item;
 }
 

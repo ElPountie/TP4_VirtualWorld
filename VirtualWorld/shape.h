@@ -1,6 +1,9 @@
 #pragma once
 #include <QPointF>
 #include <QGraphicsItem>
+#include "qbrush.h"
+#include"qcolor.h"
+#include "qpen.h"
 
 class Shape
 {
@@ -8,7 +11,7 @@ public:
 	QPointF pos;
 	int id;
 	static int current_id;
-
+	QString color;
 	virtual void draw() = 0;
 	virtual QGraphicsItem* getGraphicsItem() const = 0;
 	virtual QString type() const = 0 ;
